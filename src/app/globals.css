@@ -4,17 +4,17 @@
 
 @layer base {
   :root {
-    --bg-deep: #0A0C0E;
+    --background: #0A0C0E;
     --surface: #121518;
     --elevated: #1A1E23;
-    --accent-green: #1A3C34;
-    --accent-gold: #C9A227;
+    --primary: #1A3C34;
+    --accent: #C9A227;
     --text-primary: #F5F5F0;
     --text-secondary: #A8B0B8;
   }
 
   body {
-    background-color: var(--bg-deep);
+    background-color: var(--background);
     color: var(--text-primary);
     overflow: hidden;
     user-select: none;
@@ -23,10 +23,9 @@
 }
 
 .carbon-fiber {
-  background-color: #0A0C0E;
   background-image: 
-    linear-gradient(45deg, rgba(255,255,255,0.02) 25%, transparent 25%, transparent 75%, rgba(255,255,255,0.02) 75%, rgba(255,255,255,0.02)),
-    linear-gradient(45deg, rgba(255,255,255,0.02) 25%, transparent 25%, transparent 75%, rgba(255,255,255,0.02) 75%, rgba(255,255,255,0.02));
+    linear-gradient(45deg, rgba(255,255,255,0.01) 25%, transparent 25%, transparent 75%, rgba(255,255,255,0.01) 75%, rgba(255,255,255,0.01)),
+    linear-gradient(45deg, rgba(255,255,255,0.01) 25%, transparent 25%, transparent 75%, rgba(255,255,255,0.01) 75%, rgba(255,255,255,0.01));
   background-size: 4px 4px;
   background-position: 0 0, 2px 2px;
 }
@@ -34,10 +33,10 @@
 .glass {
   background: rgba(18, 21, 24, 0.7);
   backdrop-filter: blur(12px);
-  border: 1px solid rgba(201, 162, 39, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.glass-green {
+.glass-accent {
   background: rgba(26, 60, 52, 0.4);
   backdrop-filter: blur(12px);
   border: 1px solid rgba(26, 60, 52, 0.3);
@@ -67,7 +66,26 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to bottom, transparent, rgba(26, 60, 52, 0.03), transparent);
+  background: linear-gradient(to bottom, transparent, rgba(26, 60, 52, 0.02), transparent);
   pointer-events: none;
-  animation: scanline 10s linear infinite;
+  animation: scanline 12s linear infinite;
+}
+
+/* Custom Scrollbar for Luxury OS */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(201, 162, 39, 0.2);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(201, 162, 39, 0.4);
 }

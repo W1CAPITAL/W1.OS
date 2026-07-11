@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
 
 export default function Calculator() {
   const [display, setDisplay] = useState("0");
@@ -31,34 +30,36 @@ export default function Calculator() {
     setDisplay(prev => prev === "0" ? val : prev + val);
   };
 
-  const btn = "h-14 glass rounded-xl flex items-center justify-center text-xs uppercase tracking-widest hover:bg-white/5 active:scale-95 transition-all";
-  const gold = "text-accent-gold border border-accent-gold/20 bg-accent-gold/5";
+  const btn = "h-14 glass rounded-xl flex items-center justify-center text-[10px] uppercase tracking-[0.2em] hover:bg-white/5 active:scale-95 transition-all text-text-secondary";
+  const accent = "text-accent border border-accent/20 bg-primary/10 font-bold";
 
   return (
-    <div className="h-full flex items-center justify-center p-8">
+    <div className="h-full flex items-center justify-center bg-background/50 p-8">
       <div className="w-80 space-y-6">
-        <div className="text-right p-6 bg-surface/40 rounded-2xl border border-white/5">
-          <p className="text-[10px] text-text-secondary opacity-40 h-4 uppercase tracking-widest">{equation}</p>
-          <p className="text-4xl font-light tracking-tighter text-text-primary">{display}</p>
+        <div className="text-right p-8 bg-black/40 rounded-2xl border border-white/5 shadow-inner">
+          <p className="text-[10px] text-accent/40 h-4 uppercase tracking-[0.3em] font-mono">{equation}</p>
+          <p className="text-4xl font-light tracking-tighter text-text-primary mt-2">{display}</p>
         </div>
 
         <div className="grid grid-cols-4 gap-3">
           {["C", "/", "*", "-"].map(v => (
-            <button key={v} onClick={() => handleAction(v)} className={`${btn} ${gold}`}>{v}</button>
+            <button key={v} onClick={() => handleAction(v)} className={cn(btn, accent)}>{v}</button>
           ))}
           {[7, 8, 9, "+"].map(v => (
-            <button key={v} onClick={() => handleAction(String(v))} className={`${btn} ${v === '+' ? gold : ''}`}>{v}</button>
+            <button key={v} onClick={() => handleAction(String(v))} className={cn(btn, v === '+' ? accent : '')}>{v}</button>
           ))}
           {[4, 5, 6].map(v => (
             <button key={v} onClick={() => handleAction(String(v))} className={btn}>{v}</button>
           ))}
-          <button onClick={() => handleAction("=")} className={`${btn} row-span-2 h-full bg-accent-gold text-bg-deep font-bold`}>=</button>
+          <button onClick={() => handleAction("=")} className={cn(btn, "row-span-2 h-full bg-accent text-background font-bold border-none shadow-lg shadow-accent/10")}>=</button>
           {[1, 2, 3].map(v => (
             <button key={v} onClick={() => handleAction(String(v))} className={btn}>{v}</button>
           ))}
-          <button onClick={() => handleAction("0")} className={`${btn} col-span-3`}>0</button>
+          <button onClick={() => handleAction("0")} className={cn(btn, "col-span-3")}>0</button>
         </div>
       </div>
     </div>
   );
 }
+
+import { cn } from "@/lib/utils";
